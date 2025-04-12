@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Carrusel de imagenes y videos</title>
+
+    <meta name="description" content="Carrusel interactivo de imágenes y videos. Carga archivos desde una carpeta local y los guarda en el navegador (IndexedDB). Controles de reproducción, pantalla completa y auto-ocultado.">
+    <meta name="keywords" content="carrusel, slideshow, galería, imágenes, videos, fotos, javascript, indexeddb, web app, interactivo, local, mp4, webm">
+    <meta name="Alberto Escobar" content="albercode">
+    <link rel="icon" href="/assets/img/favicon.png" type="image/x-icon">
+   
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+ 
+
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
+
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">Carrusel de Imágenes y Videos</h1>
+
+    <div id="actionButtonsContainer" class="text-center mb-4">
+        <label for="folderInput" id="selectFolderLabel" class="action-button hidden">Seleccionar Carpeta</label>
+        <input type="file" id="folderInput" webkitdirectory directory multiple />
+        <button id="clearCacheButton" class="action-button secondary hidden">Limpiar Archivos Guardados</button>
+    </div>
+
+    <div id="message">Inicializando...</div>
+
+    <div id="carouselContainer" class="carousel-container hidden">
+        <div id="mediaContainer" class="w-full h-full flex items-center justify-center">
+            <img id="carouselImage" src="" alt="Media del carrusel" class="carousel-media hidden">
+            <video id="carouselVideo" class="carousel-media hidden" controls muted playsinline preload="metadata">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+        </div>
+
+        <div id="controlsOverlay">
+            <button id="prevButton" class="nav-button prev-button" aria-label="Anterior"><svg class="icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+            <button id="nextButton" class="nav-button next-button" aria-label="Siguiente"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+            <div id="imageIndicator" class="hidden"></div>
+            <button id="playPauseButton" class="control-button play-pause-button hidden" aria-label="Pausar">
+                <svg id="pauseIcon" class="icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                <svg id="playIcon" class="icon hidden" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            </button>
+            <button id="fullscreenButton" class="control-button fullscreen-button hidden" aria-label="Pantalla Completa">
+                <svg id="expandIcon" class="icon" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+                <svg id="minimizeIcon" class="icon hidden" viewBox="0 0 24 24"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="assets/javascript/script.js"></script>
+    
+</body>
+</html>
+
